@@ -8,7 +8,6 @@ import { createAccessToken } from "@/helpers/createAccessTocken";
 import { createRefreshToken } from "@/helpers/createRefreshToken";
 
 const usersFilePath = path.resolve(process.cwd(), "users.json");
-const JWT_SECRET = "your_jwt_secret_key"; // Replace with your actual secret key
 
 export async function POST(req: NextRequest) {
   const { username, password } = await req.json();

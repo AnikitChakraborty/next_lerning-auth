@@ -2,8 +2,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { jwtVerify } from "jose";
 
-const JWT_SECRET = "your_jwt_secret_key"; // Replace with your actual secret key
-
 export async function middleware(req: NextRequest) {
   const accessToken = req.cookies.get("accessToken")?.value;
 
@@ -24,7 +22,7 @@ export async function middleware(req: NextRequest) {
   try {
     const { payload } = await jwtVerify(
       accessToken,
-      new TextEncoder().encode(JWT_SECRET)
+      new TextEncoder().encode(process.env.JWT_SECRET!)
     );
     console.log("Middleware: Token decoded successfully:", payload);
 
